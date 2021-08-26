@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block titulo %}Mural - Home{% endblock %}
+{% block conteudo %}
+    <form action="/novorecado" method="post">
+        <input type="hidden" name="dest" value="{{id}}">
+        <input type="text" name="remetente"><br>
+        <textarea name="conteudo" cols="30" rows="10"></textarea><br>
+        <input type="submit" value="Enviar recado">
+    </form>
+{% endblock %}

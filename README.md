@@ -1,0 +1,1 @@
+Um mural em que usuários podem postar mensagens uns para os outros.

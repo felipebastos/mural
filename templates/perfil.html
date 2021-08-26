@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block titulo %}Mural - Home{% endblock %}
+{% block conteudo %}
+    <h1>Perfil</h1>
+    <h2>{{usuario.nome}} {{usuario.sobrenome}}</h2>
+    {% if usuario.idade >= 18 %}
+    Idade: {{usuario.idade}}
+    {% endif %}
+    <hr>
+    <h1>Depoimentos</h1>
+    {% for recado in recados %}
+    <p><b>{{recado.remetente}}:</b> {{recado.conteudo}}</p>
+    {% endfor %}
+{% endblock %}

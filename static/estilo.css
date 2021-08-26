@@ -1,0 +1,32 @@
+body {
+    background-color: lightgrey;
+}
+
+table {
+    position: relative;
+    width: 80%;
+    left: 10%;
+}
+
+h1 {
+    text-align: center;
+}
+
+img.logo {
+    width: 30px;
+    height: 30px;
+}
+
+span.site {
+    color: #030d68;
+}
+
+div.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+}
