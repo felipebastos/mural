@@ -1,21 +1,31 @@
 {% extends 'base.html' %}
 {% block titulo %}Mural - Home{% endblock %}
 {% block conteudo %}
-    <h1>Bem vindo ao Mural!</h1>
-    <table border=1>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for usuario in usuarios %}
-            <tr>
-                <td><a href="/perfil/{{usuario.id}}">{{usuario.nome}} {{usuario.sobrenome}}</a></td>
-                <td><a href="/recado/{{usuario.id}}">Enviar recado</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<h1>Bem vindo ao Mural!</h1>
+<div class="flex-container">
+    <a href="/cadastro">Criar novo mural</a>
+    {% with mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+    {% for mensagem in mensagens %}
+    <h2>{{mensagem}}</h2>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+<table border=1>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td><a href="/perfil/{{usuario.id}}">{{usuario.nome}} {{usuario.sobrenome}}</a></td>
+            <td><a href="/recado/{{usuario.id}}">Enviar recado</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

@@ -8,6 +8,7 @@
     {% endif %}
     <hr>
     <h1>Depoimentos</h1>
+    <a href="/recado/{{usuario.id}}">Escrever novo depoimento</a><br>
     {% for recado in recados %}
     <p><b>{{recado.remetente}}:</b> {{recado.conteudo}}</p>
     {% endfor %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block titulo %}Cadastro de novos murais{% endblock %}
+{% block conteudo %}
+<form action="/addcadastro" method="post">
+    <input type="text" name="nome" placeholder="seu nome" required><br>
+    <input type="text" name="sobrenome" placeholder="seu sobrenome" required><br>
+    <label for="idade">Idade:</label>
+    <input type="number" name="idade" id="idade" value='0' required><br>
+
+    <input type="submit" value="Criar mural">
+</form>
+{% endblock %}

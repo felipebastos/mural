@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, flash
 
 app = Flask(__name__)
+app.secret_key = '123456'
 
 usuarios = [
     {'id': 1, 'nome': 'Reperquilson', 'sobrenome': 'Bastos', 'idade': 19},
@@ -49,6 +50,33 @@ def novorecado():
     base_de_recados.append(recado)
     return redirect(f'/perfil/{request.form["dest"]}')
 
+
 @app.get('/recado/<int:id>')
 def recado(id):
     return render_template('postarecado.html', id=id)
+
+
+@app.get('/cadastro')
+def cadastro():
+    return render_template('cadastro.html')
+
+
+@app.post('/addcadastro')
+def cadastrar():
+    id_novo = len(usuarios)+1
+    nome_novo = request.form['nome']
+    sobrenome_novo = request.form['sobrenome']
+    idade_novo = int(request.form['idade'])
+
+    novo_usuario = {
+        'id': id_novo,
+        'nome': nome_novo,
+        'sobrenome': sobrenome_novo,
+        'idade': idade_novo
+        }
+    
+    usuarios.append(novo_usuario)
+
+    flash(f'Mural de {nome_novo} criado com sucesso!')
+
+    return redirect('/')

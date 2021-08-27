@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block titulo %}Mural - Home{% endblock %}
 {% block conteudo %}
+    <a href="/perfil/{{id}}">Voltar para o perfil</a><br><br>
     <form action="/novorecado" method="post">
         <input type="hidden" name="dest" value="{{id}}">
         <input type="text" name="remetente"><br>
