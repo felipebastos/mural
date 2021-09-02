@@ -17,4 +17,4 @@ def novorecado():
 # Rota que tem a ver só com mural
 @bp.get('/recado/<int:id>')
 def recado(id):
-    return render_template('postarecado.html', id=id)
+    return render_template('mural/postarecado.html', id=id)
