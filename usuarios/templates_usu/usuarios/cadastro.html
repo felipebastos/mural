@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block titulo %}Cadastro de novos murais{% endblock %}
 {% block conteudo %}
-<form action="/addcadastro" method="post">
+<form action="{{url_for('usuarios.cadastrar')}}" method="post">
     <input type="text" name="nome" placeholder="seu nome" required><br>
     <input type="text" name="sobrenome" placeholder="seu sobrenome" required><br>
     <label for="idade">Idade:</label>

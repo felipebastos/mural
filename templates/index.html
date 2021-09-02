@@ -3,7 +3,7 @@
 {% block conteudo %}
 <h1>Bem vindo ao Mural!</h1>
 <div class="flex-container">
-    <a href="/cadastro">Criar novo mural</a>
+    <a href="{{url_for('usuarios.cadastro')}}">Criar novo mural</a>
     {% with mensagens = get_flashed_messages() %}
     {% if mensagens %}
     {% for mensagem in mensagens %}
@@ -20,10 +20,10 @@
         </tr>
     </thead>
     <tbody>
-        {% for usuario in usuarios %}
+        {% for usuario in lista_usuarios %}
         <tr>
-            <td><a href="/perfil/{{usuario.id}}">{{usuario.nome}} {{usuario.sobrenome}}</a></td>
-            <td><a href="/recado/{{usuario.id}}">Enviar recado</a></td>
+            <td><a href="{{url_for('usuarios.perfil', id=usuario.id)}}">{{usuario.nome}} {{usuario.sobrenome}}</a></td>
+            <td><a href="{{url_for('mural.recado', id=usuario.id)}}">Enviar recado</a></td>
         </tr>
         {% endfor %}
     </tbody>
