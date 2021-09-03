@@ -35,4 +35,7 @@ app.register_blueprint(usuarios.bp_usuarios)
 from mural import mural
 app.register_blueprint(mural.bp)
 
+from sobre import sobre
+app.register_blueprint(sobre.bp)
+
 # Rota que tem a ver só com usuários
