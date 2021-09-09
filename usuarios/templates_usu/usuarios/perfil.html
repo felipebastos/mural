@@ -9,7 +9,7 @@
     <hr>
     <h1>Depoimentos</h1>
     <a href="{{url_for('mural.recado', id=usuario.id)}}">Escrever novo depoimento</a><br>
-    {% for recado in recados %}
-    <p><b>{{recado.remetente}}:</b> {{recado.conteudo}}</p>
+    {% for recado in usuario.recados %}
+    <p><b>{{recado.remetente}} disse para {{recado.usuario.nome}}:</b> {{recado.conteudo}}</p>
     {% endfor %}
 {% endblock %}
