@@ -17,6 +17,9 @@ class Usuario(db.Model):
     sobrenome = db.Column(db.String(200), nullable=False)
     idade = db.Column(db.Integer, default=0)
 
+    turma = db.Column(db.Integer, db.ForeignKey('turma.id'))
+    curso = db.Column(db.Integer, db.ForeignKey('curso.id'))
+
     recados = db.relationship('Recado', backref='usuario', lazy=True)
 
 # Entidades do projeto
@@ -41,3 +44,11 @@ base_de_recados = [
     {'dest': 1, 'remetente': 'Mundico', 'conteudo': 'Já achei.'},
     {'dest': 2, 'remetente': 'Reperqueli', 'conteudo': 'Você é linda!'},
 ]
+
+class Turma(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(30), unique=True, nullable=False)
+
+class Curso(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(30), unique=True, nullable=False)

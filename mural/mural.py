@@ -2,6 +2,7 @@ from flask import Blueprint, request, render_template, redirect, url_for
 
 from app import db
 from usuarios.entidades import Recado
+from mural.entidades import Qualquer
 
 bp = Blueprint('mural', __name__, template_folder='templates', url_prefix='/mural')
 
