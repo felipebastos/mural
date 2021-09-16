@@ -4,7 +4,11 @@
     <a href="{{url_for('usuarios.perfil', id=id)}}">Voltar para o perfil</a><br><br>
     <form action="{{url_for('mural.novorecado')}}" method="post">
         <input type="hidden" name="dest" value="{{id}}">
-        <input type="text" name="remetente"><br>
+        {% if current_user.is_authenticated %}
+        <input type="text" name="remetente" value="{{current_user.nome}}" readonly><br>
+        {% else %}
+        <input type="text" name="remetente" value="anônimo" readonly><br>
+        {% endif %}
         <textarea name="conteudo" cols="30" rows="10"></textarea><br>
         <input type="submit" value="Enviar recado">
     </form>

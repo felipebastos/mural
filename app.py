@@ -3,6 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from flask_migrate import Migrate
 
+from flask_login import LoginManager
+
+from flask_bcrypt import Bcrypt
+
 # Carregando variáveis de ambiente.
 from dotenv import load_dotenv
 
@@ -18,7 +22,8 @@ convention = {
 metadata = MetaData(naming_convention=convention)
 db = SQLAlchemy(metadata=metadata)
 migrate = Migrate()
-
+loginmanager = LoginManager()
+bcrypt = Bcrypt()
 
 # Configurações do app
 def create_app():
@@ -31,11 +36,16 @@ def create_app():
 
     
     db.init_app(app)
+    loginmanager.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
+    bcrypt.init_app(app)
     
     with app.app_context():
-        from routes import principal
+        loginmanager.login_view = '/auth/login'
+
+        from routes import principal, erro
         app.add_url_rule('/', view_func=principal)
+        app.register_error_handler(404, erro)
 
         from usuarios import usuarios
         app.register_blueprint(usuarios.bp_usuarios)
@@ -45,5 +55,8 @@ def create_app():
 
         from sobre import sobre
         app.register_blueprint(sobre.bp)
+
+        from auth import auth
+        app.register_blueprint(auth.bp)
 
     return app

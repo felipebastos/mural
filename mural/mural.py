@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, url_for
+from flask_login import login_required
 
 from app import db
 from usuarios.entidades import Recado
@@ -7,6 +8,7 @@ from mural.entidades import Qualquer
 bp = Blueprint('mural', __name__, template_folder='templates', url_prefix='/mural')
 
 @bp.post('/novorecado')
+@login_required
 def novorecado():
     novo_recado = Recado()
     novo_recado.dest = int(request.form['dest'])

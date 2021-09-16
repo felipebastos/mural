@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block titulo %}- Login{% endblock %}
+{% block conteudo %}
+{% with mensagens = get_flashed_messages() %}
+{% if mensagens %}
+{% for mensagem in mensagens %}
+<h2>{{mensagem}}</h2>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="{{url_for('auth.form_login')}}" method="post">
+    <input type="text" name="nick" placeholder="seu nick" required><br>
+    <input type="password" name="senha" placeholder="sua senha"><br>
+    <input type="submit" value="Entrar">
+</form>
+{% endblock %}

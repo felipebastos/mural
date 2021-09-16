@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block titulo %}- Cadastro de usuários{% endblock %}
+{% block conteudo %}
+{% with mensagens = get_flashed_messages() %}
+{% if mensagens %}
+{% for mensagem in mensagens %}
+<h2>{{mensagem}}</h2>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="{{url_for('auth.cadastro')}}" method="post">
+    <input type="text" name="nick" placeholder="Seu apelido" required><br>
+    <input type="text" name="nome" placeholder="Seu primeiro nome" required><br>
+    <input type="text" name="sobrenome" placeholder="Seu sobrenome" required><br>
+    <input type="password" name="senha" placeholder="Seu senha" required><br>
+    <input type="submit" value="Cadastrar">
+</form>
+{% endblock %}
