@@ -49,6 +49,8 @@ class Turma(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(30), unique=True, nullable=False)
 
+    curso = db.Column(db.Integer, db.ForeignKey('curso.id'))
+
 class Curso(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(30), unique=True, nullable=False)
